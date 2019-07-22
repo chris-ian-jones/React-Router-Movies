@@ -3,7 +3,7 @@ import axios from 'axios';
 // import MovieCard from './MovieCard'
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
   // const id = props.match.params.id
  
   useEffect(() => {
@@ -45,12 +45,11 @@ const Movie = (props) => {
           Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
-        <p>{stars}</p>
-        {/* {stars.map(star => (
+        {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
           </div>
-        ))} */}
+        ))}
       </div>
       <div className="save-button">Save</div>
     </div>
