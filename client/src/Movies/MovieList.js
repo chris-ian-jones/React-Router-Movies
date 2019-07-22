@@ -29,7 +29,6 @@ const MovieList = props => {
         <Link to={`movies/${movie.id}`} >
           <MovieDetails key={movie.id} movie={movie} />
         </Link>
-        
       ))}
     </div>
   );
