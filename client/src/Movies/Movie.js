@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import MovieCard from './MovieCard'
 
+// component to render each 'card' for each movie
+// using the 'match' props feature of react-router, grab the id from the params of the component
+// use that id to make a API call using dynamic url to specific displayed movie
+// using the useState hook, set the state of movie, to that of the data received from API
+// return a component displaying movie data
+
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
-  // const id = props.match.params.id
+  
  
   useEffect(() => {
     const id = props.match.params.id;
