@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
-// import MovieCard from './MovieCard'
+import { Link, Route } from "react-router-dom";
+import MovieCard from './MovieCard'
 
 // function to get Movie data from API using Axios
 // Movie data is set to state
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 // while also building 'Link' navigations to a custom url to 'movies/{custom}'
 // custom is the value of key: id for each item in array
 const MovieList = props => {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([{}])
   useEffect(() => {
     const getMovies = () => {
       axios
@@ -36,29 +36,32 @@ const MovieList = props => {
         </Link>
       ))}
     </div>
-  );
+  ); 
 }
 
 // component to create 'card' for each movie, using data passed in from movies array
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
+  // const { title, director, metascore, stars } = movie;
+  {console.log('moviedetails', movie)}
   return (
-    <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
-        Metascore: <strong>{metascore}</strong>
-      </div>
-      <h3>Actors</h3>
-      {stars.map(star => (
-        <div key={star} className="movie-star">
-          {star}
-        </div>
-      ))}
-    </div>
+    // <div className="movie-card">
+    //   <h2>{title}</h2>
+    //   <div className="movie-director">
+    //     Director: <em>{director}</em>
+    //   </div>
+    //   <div className="movie-metascore">
+    //     Metascore: <strong>{metascore}</strong>
+    //   </div>
+    //   <h3>Actors</h3>
+    //   {stars.map(star => (
+    //     <div key={star} className="movie-star">
+    //       {star}
+    //     </div>
+    //   ))}
+    // </div>
     // <MovieCard key={movie.id} title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars}></MovieCard>
+    <Route render={() => <MovieCard movie={movie} />} />
+    
   );
 }
 

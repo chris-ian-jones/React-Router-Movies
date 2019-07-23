@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import MovieCard from './MovieCard'
+import MovieCard from './MovieCard'
+import { Route } from "react-router-dom";
 
 // component to render each 'card' for each movie
 // using the 'match' props feature of react-router, grab the id from the params of the component
@@ -10,6 +11,7 @@ import axios from 'axios';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
+  // console.log('Movie', props)
   
  
   useEffect(() => {
@@ -27,7 +29,7 @@ const Movie = (props) => {
           console.error(error);
         });
         
-  },[]);
+  },[props.match.params.id]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -39,26 +41,27 @@ const Movie = (props) => {
     return <div>Loading movie information...</div>;
   }
 
-  const { title, director, metascore, stars } = movie;
+  // const { title, director, metascore, stars } = movie;
   return (
-    <div className="save-wrapper">
-      <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
-        <h3>Actors</h3>
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
-      </div>
-      <div className="save-button">Save</div>
-    </div>
+    // <div className="save-wrapper">
+    //   <div className="movie-card">
+    //     <h2>{title}</h2>
+    //     <div className="movie-director">
+    //       Director: <em>{director}</em>
+    //     </div>
+    //     <div className="movie-metascore">
+    //       Metascore: <strong>{metascore}</strong>
+    //     </div>
+    //     <h3>Actors</h3>
+    //     {stars.map(star => (
+    //       <div key={star} className="movie-star">
+    //         {star}
+    //       </div>
+    //     ))}
+    //   </div>
+    //   <div className="save-button">Save</div>
+    // </div>
+    <Route render={() => <MovieCard {...props} movie={movie} />} />
     // <MovieCard key={movie.id} title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars}></MovieCard>
   );
 }
