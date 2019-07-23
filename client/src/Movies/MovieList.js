@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 // Movie data is set to state
 // 'movies' state array of objects is mapped over
 // passing the data into MovieDetails component
-// while also building 'Link' navigations to a custom url 
-// which is the value of key: id for each item in array
+// while also building 'Link' navigations to a custom url to 'movies/{custom}'
+// custom is the value of key: id for each item in array
 const MovieList = props => {
   const [movies, setMovies] = useState([])
   useEffect(() => {
@@ -30,9 +30,9 @@ const MovieList = props => {
   
   return (
     <div className="movie-list">
-      {movies.map(movie => (
-        <Link to={`movies/${movie.id}`} >
-          <MovieDetails key={movie.id} movie={movie} />
+      {movies.map((movie, index) => (
+        <Link to={`movies/${movie.id}`} key={index} >
+          <MovieDetails key={index} movie={movie} />
         </Link>
       ))}
     </div>

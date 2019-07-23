@@ -21,12 +21,12 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
-          console.log(response.data)
+          console.log('movie.js api call:', response.data)
         })
         .catch(error => {
           console.error(error);
         });
-
+        
   },[]);
   
   // Uncomment this only when you have moved on to the stretch goals
